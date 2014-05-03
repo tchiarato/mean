@@ -1,0 +1,6 @@
+{
+    "db": "mongodb://localhost:27017/mean-customer",
+    "app": {
+        "name": "Customer App - A sample of use mean - Development"
+    }
+}

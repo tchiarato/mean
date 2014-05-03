@@ -1,0 +1,24 @@
+{
+  "name": "customer",
+  "version": "0.0.1",
+  "homepage": "https://github.com/tchiarato/mean",
+  "authors": [
+    "Thiago Dutra Chiarato <thiago.chiarato@hotmail.com>"
+  ],
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "angular": "~1.2.16"
+  }
+}
