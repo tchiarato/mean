@@ -1,0 +1,6 @@
+{
+    "db": "mongodb://tchiarato:B1TO7@novus.modulusmongo.net:27017/yzubi6Vo",
+    "app": {
+        "name": "TODO App - A sample of use mean"
+    }
+}

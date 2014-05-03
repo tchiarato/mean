@@ -1,0 +1,6 @@
+{
+    "db": "mongodb://localhost:27017/mean-todo",
+    "app": {
+        "name": "TODO App - A sample of use mean - Development"
+    }
+}
