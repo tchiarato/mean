@@ -1,6 +1,30 @@
 doctype html
-html
-  head
-    title= title
-  body
-    block content
+html(ng-app="app")
+    head
+        title Sales App
+        link(href='/vendor/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
+        link(href='/vendor/bootswatch/darkly/bootstrap.min.css', rel='stylesheet')
+        link(href='/vendor/bootswatch/darkly/bootswatch.less', rel='stylesheet')
+        link(href='/vendor/bootswatch/darkly/variables.less', rel='stylesheet')
+    body
+        div.navbar.navbar-fixed-top.navbar-inverse
+            div.navbar-inner
+                div.container
+                    a.btn.btn-navbar(data-toggle='collapse', data-target='.nav-collapse')
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                    a.brand(href='#') Sales - 1
+                    div.nav-collapse
+                        ul.nav
+                            li
+                                a(href='#/') Home
+                            li
+                                a(href='#/clientes') Clientes
+                            li
+                                a(href='#/funcionarios') Funcionários
+                            li
+                                a(href='#/transportadoras') Transportadoras
+                    form.navbar-form.pull-right
+                        img.pull-right(src='images/ajax-loader.gif', ng-show='showLoaderFlag')
+        block content
