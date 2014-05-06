@@ -3,7 +3,7 @@ var express = require('express'),
 
 /* GET / */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Express' });
+  res.render('partials/index', { title: 'Express' });
 });
 
 /* GET /partials/listUsers */

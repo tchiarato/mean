@@ -3,28 +3,30 @@ html(ng-app="app")
     head
         title Sales App
         link(href='/vendor/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
-        link(href='/vendor/bootswatch/darkly/bootstrap.min.css', rel='stylesheet')
-        link(href='/vendor/bootswatch/darkly/bootswatch.less', rel='stylesheet')
-        link(href='/vendor/bootswatch/darkly/variables.less', rel='stylesheet')
+        link(href='/vendor/bootstrap/dist/css/bootstrap-theme.min.css', rel='stylesheet')
+        link(href='/vendor/bootstrap/dist/css/bootstrap.css.map', rel='stylesheet')
+        link(href='/vendor/bootstrap/dist/css/bootstrap-theme.css.map', rel='stylesheet')
     body
-        div.navbar.navbar-fixed-top.navbar-inverse
-            div.navbar-inner
-                div.container
-                    a.btn.btn-navbar(data-toggle='collapse', data-target='.nav-collapse')
+        div.navbar.navbar-default(role='navigation')
+            div.container-fluid
+                div.navbar-header
+                    button.navbar-toggle(data-toggle='collapse', data-target='#bs-example-navrbar-collapse-1')
+                        span.sr-only Toggle Navigation
                         span.icon-bar
                         span.icon-bar
                         span.icon-bar
-                    a.brand(href='#') Sales - 1
-                    div.nav-collapse
-                        ul.nav
-                            li
-                                a(href='#/') Home
-                            li
-                                a(href='#/clientes') Clientes
-                            li
-                                a(href='#/funcionarios') Funcionários
-                            li
-                                a(href='#/transportadoras') Transportadoras
-                    form.navbar-form.pull-right
-                        img.pull-right(src='images/ajax-loader.gif', ng-show='showLoaderFlag')
+                    a.navbar-brand(href='#') Sales
+                div.collapse.navbar-collapse#bs-example-navrbar-collapse-1
+                    ul.nav.navbar-nav
+                        li.active
+                            a(href='#/') Home
+                        li
+                            a(href='#/clientes') Clientes
+                        li
+                            a(href='#/funcionarios') Funcionários
+                        li
+                            a(href='#/transportadoras') Transportadoras
+        form.navbar-form.pull-right
+            img.pull-right(src='images/ajax-loader.gif', ng-show='showLoaderFlag')
         block content
+        include ./includes/scripts

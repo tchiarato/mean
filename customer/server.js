@@ -10,7 +10,7 @@ var index         = require('./server/routes/index'),
 var app           = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'server/views/partials'));
+app.set('views', path.join(__dirname, 'server/views'));
 app.set('view engine', 'jade');
 
 app.use(logger('dev'));
