@@ -1,7 +1,7 @@
 'use strict'
 
 // URL de acesso ao servidor RESTful
-var SERVER_URL = "http://localhost:3000";
+var SERVER_URL = "http://localhost:3000/api";
 
 // Criação do $app que é o modulo que representa toda a aplicação.
 var $app = angular.module('app', ['ngRoute', 'app.customerCtrl']);
@@ -10,36 +10,39 @@ $app.config(function($routeProvider, $httpProvider) {
 
     // configura o router provider
     $routeProvider
-    .when('/',             { templateUrl: 'partials/main' })
     .when('/clientes',     { controller: 'customerCtrl', templateUrl: 'partials/main' })
-    .when('/clientes/new', { controller: 'customerCtrl', templateUrl: 'partials/update' })
+    .when('/clientes/new', { controller: 'customerCtrl', templateUrl: 'partials/new' })
     .when('/clientes/:id', { controller: 'customerCtrl', templateUrl: 'partials/update' })
-    .otherwise({ redirectTo: '/' });
+    .otherwise({ redirectTo: '/clientes' });
 
     $httpProvider.responseInterceptors.push(function($q, $rootScope) {
         return function(promise) {
             // always disable loader
             $rootScope.hideLoader();
-            return promise.then(function(response) {
-                // do something on success
-                return(response);
-            }, function(response) {
-                // do something on error
-                $data = $response.data;
-                $error = $data.error;
-                console.log($data);
+            return promise.then(
+                function(response) {
 
-                if ($error && $error.text)
-                    alert("Error: " + $error.text);
-                else {
-                    if (response.status === 404)
-                        alert("Erro ao acessar servidor. Página não encontrada. Veja o Log de erros para maiores detalhes.")
+                    // do something on success
+                    return(response);
+
+                }, function(response) {
+
+                    // do something on error
+                    $data = $response.data;
+                    $error = $data.error;
+                    console.log($data);
+
+                    if ($error && $error.text)
+                        alert("Error: " + $error.text);
                     else
-                        alert("ERROR! See log console!");
-                }
+                        if (response.status === 404)
+                            alert("Erro ao acessar servidor. Página não encontrada. Veja o Log de erros para maiores detalhes.")
+                        else
+                            alert("ERROR! See log console!");
 
-                return $q.reject(response);
-            });
+                    return $q.reject(response);
+                }
+            );
         }
     });
 });
@@ -67,7 +70,7 @@ $app.run(function($rootScope) {
 
 $app.filter('startFrom', function() {
     return function(input, start) {
-        if (input==null)
+        if (input == null)
             return null;
 
         start = +start;
