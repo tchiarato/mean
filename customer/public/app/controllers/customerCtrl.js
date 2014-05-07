@@ -11,10 +11,12 @@ module.controller('customerCtrl', function($scope, $http, $routeParams, $locatio
 
     // Paginação
     $scope.currentPage = 0;
-    $scope.pageSize = 15;
+    $scope.pageSize = 2;
 
     $scope.numberOfPages = function() {
-        return Math.ceil($scope.rows.length / $scope.pageSize);
+        if ($scope.rows != null)
+            return Math.ceil($scope.rows.length / $scope.pageSize);
+        return 0;
     }
 
     $scope.loadAll = function() {
@@ -28,9 +30,9 @@ module.controller('customerCtrl', function($scope, $http, $routeParams, $locatio
     $scope.loadRow = function() {
         if ($routeParams.id != null) {
             $scope.showLoader();
-            $http.get($scope.server('/customer/' + $routeParams.id))
+            $http.get($scope.server('/customers/' + $routeParams.id))
                 .success(function(data) {
-                    $scope.row = data;
+                    $scope.row = data[0];
                 });
         }
     }
@@ -40,7 +42,16 @@ module.controller('customerCtrl', function($scope, $http, $routeParams, $locatio
         $http.post($scope.server('/customers'), $scope.row)
             .success(function(data) {
                 alert('Salvo com sucesso');
-                $location.path('/clientes')
+                $location.path('/clientes/' + data._id);
+            });
+    }
+
+    $scope.update = function() {
+        $scope.showLoader();
+        $http.put($scope.server('/customers/' + $routeParams.id), $scope.row)
+            .success(function(data) {
+                alert('Alterado com sucesso');
+                $location.path('/clientes/' + $routeParams.id);
             });
     }
 });

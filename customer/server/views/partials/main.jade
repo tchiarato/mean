@@ -10,10 +10,10 @@ table#tableData.table.table-bordered.table-hover.table-striped
             th Nome
             th Fone
     tbody
-        tr(ng-repeat='row in rows | startFrom: currentPage*pageSize | limitTo: pageSize')
+        tr(ng-repeat='row in rows | startFrom: currentPage * pageSize | limitTo: pageSize')
             td {{row._id}}
             td
-                a(href='#/cliente/{{row.CustomerID}}') {{row.contactName}}
+                a(href='#/clientes/{{row._id}}') {{row.contactName}}
             td {{row.phone}}
-button.btn.btn-primary(ng-click='currentPage=currentPage - 1', ng-disabled='currentPage == 0') &larr; Voltar
-button.btn.btn-primary.pull-right(ng-click='currentPage=currentPage + 1', ng-disabled='currentPage > rows.length / pageSize - 1') &rarr; Avançar
+button.btn.btn-primary(ng-click='currentPage = currentPage - 1', ng-disabled='currentPage == 0') &larr; Voltar
+button.btn.btn-primary.pull-right(ng-click='currentPage = currentPage + 1', ng-disabled='currentPage + 1 >= numberOfPages()') &rarr; Avançar

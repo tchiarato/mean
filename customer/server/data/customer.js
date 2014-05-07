@@ -17,7 +17,8 @@ exports.create = function(customer, callback) {
     model.save(callback);
 }
 
-exports.update = function(customer, model, callback){
+exports.update = function(customer, model, callback) {
+    delete model._id;
     Customer.update({ _id: customer.id }, model, callback);
 }
 
