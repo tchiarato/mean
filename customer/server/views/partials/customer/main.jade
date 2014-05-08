@@ -1,0 +1,19 @@
+h2 Clientes
+div(ng-init='loadAll()')
+
+div
+    a.pull-right(href='#/clientes/new') Novo
+table#tableData.table.table-bordered.table-hover.table-striped
+    thead
+        tr
+            th(width='10%') Id
+            th Nome
+            th Fone
+    tbody
+        tr(ng-repeat='row in rows | startFrom: currentPage * pageSize | limitTo: pageSize')
+            td {{row._id}}
+            td
+                a(href='#/clientes/{{row._id}}') {{row.contactName}}
+            td {{row.phone}}
+button.btn.btn-primary(ng-click='currentPage = currentPage - 1', ng-disabled='currentPage == 0') &larr; Voltar
+button.btn.btn-primary.pull-right(ng-click='currentPage = currentPage + 1', ng-disabled='currentPage + 1 >= numberOfPages()') &rarr; Avançar

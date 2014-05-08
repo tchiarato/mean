@@ -6,9 +6,9 @@ router.get('/', function(req, res) {
   res.render('partials/index', { title: 'Express' });
 });
 
-/* GET /partials/listUsers */
-router.get('/partials/:partialPath', function(req, res) {
-    res.render('partials/' + req.params.partialPath);
+/* GET /partials/path */
+router.get('/partials/*', function(req, res) {
+    res.render('partials/' + req.params[0]);
 });
 
 module.exports = router;

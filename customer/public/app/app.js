@@ -10,10 +10,12 @@ $app.config(function($routeProvider, $httpProvider) {
 
     // configura o router provider
     $routeProvider
-    .when('/clientes',     { controller: 'customerCtrl', templateUrl: 'partials/main' })
-    .when('/clientes/new', { controller: 'customerCtrl', templateUrl: 'partials/new' })
-    .when('/clientes/:id', { controller: 'customerCtrl', templateUrl: 'partials/update' })
-    .otherwise({ redirectTo: '/clientes' });
+    .when('/',             {                             templateUrl: 'partials/main' })
+    .when('/clientes',     { controller: 'customerCtrl', templateUrl: 'partials/customer/main' })
+    .when('/clientes/new', { controller: 'customerCtrl', templateUrl: 'partials/customer/new' })
+    .when('/clientes/:id', { controller: 'customerCtrl', templateUrl: 'partials/customer/update' })
+    .when('/funcionarios', { controller: 'employeeCtrl', templateUrl: 'partials/employee/main' })
+    .otherwise({ redirectTo: '/' });
 
     $httpProvider.responseInterceptors.push(function($q, $rootScope) {
         return function(promise) {

@@ -1,0 +1,20 @@
+h2 Clientes
+div(ng-init='loadRow()')
+    form.form-horizontal(ng-submit='update()', role='form')
+        div.form-group
+            label.control-label.col-sm-2(for='inputName') ObjectID:
+            div.col-sm-3
+                input.form-control#inputName(type='text', value='{{row._id}}', disabled)
+        div.form-group
+            label.control-label.col-sm-2(for='inputName') Name:
+            div.col-sm-5
+                input.form-control#inputName(type='text', ng-model='row.contactName', placeholder='Name')
+        div.form-group
+            label.control-label.col-sm-2(for='inputPhone') Phone:
+            div.col-sm-3
+                input.form-control#inputPhone(type='text', ng-model='row.phone', placeholder='Phone')
+        div.form-group.well
+            div.col-sm-offset-2
+                button.btn.btn-primary.btn-lg(type='submit') Save
+                a.btn(href='#/clientes') Voltar
+    button.btn.btn-danger.pull-right(ng-click='delete()') Apagar

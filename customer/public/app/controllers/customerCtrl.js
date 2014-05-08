@@ -11,7 +11,7 @@ module.controller('customerCtrl', function($scope, $http, $routeParams, $locatio
 
     // Paginação
     $scope.currentPage = 0;
-    $scope.pageSize = 2;
+    $scope.pageSize = 5;
 
     $scope.numberOfPages = function() {
         if ($scope.rows != null)
@@ -52,6 +52,15 @@ module.controller('customerCtrl', function($scope, $http, $routeParams, $locatio
             .success(function(data) {
                 alert('Alterado com sucesso');
                 $location.path('/clientes/' + $routeParams.id);
+            });
+    }
+
+    $scope.delete = function() {
+        $scope.showLoader();
+        $http.delete($scope.server('/customers/' + $routeParams.id))
+            .success(function(data) {
+                alert('Excluído com sucesso!');
+                $location.path('/clientes');
             });
     }
 });
