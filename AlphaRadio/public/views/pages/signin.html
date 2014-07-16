@@ -1,0 +1,52 @@
+<div class="page-signin">
+
+    <div class="signin-header">
+        <section class="logo text-center">
+            <a href="#/">{{main.brand}}</a>
+        </section>
+    </div>
+
+    <div class="signin-body">
+        <div class="container">
+            <div class="form-container" ng-controller="AuthenticationCtrl">
+                <form class="form-horizontal form-validation" 
+                      ng-submit="login(auth.email, auth.password)"
+                      name="form_signin">
+                    <fieldset>
+                        <div class="form-group">
+                            <div class="btn-icon-lined btn-icon-round btn-icon-sm btn-default-light">
+                                <span class="glyphicon glyphicon-envelope"></span>
+                            </div>
+                            <input type="email"
+                                   class="form-control input-lg input-round text-center"
+                                   required
+                                   placeholder="Email"
+                                   ng-model="auth.email">
+                        </div>
+                        <div class="form-group">
+                            <div class="btn-icon-lined btn-icon-round btn-icon-sm btn-default-light">
+                                <span class="glyphicon glyphicon-lock"></span>
+                            </div>
+                            <input type="password"
+                                   class="form-control input-lg input-round text-center"
+                                   required
+                                   placeholder="Senha"
+                                   ng-model="auth.password">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit"
+                                    class="btn btn-primary btn-lg btn-round btn-block text-center"
+                                    data-ng-disabled="!form_signin.$valid">Entrar</button>
+                        </div>
+                    </fieldset>
+                </form>
+
+                <section>
+                    <p class="text-center"><a href="#/pages/forgot-password">Esqueceu sua senha?</a></p>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
