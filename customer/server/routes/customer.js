@@ -4,6 +4,7 @@ var express  = require('express'),
 
 /* GET /api/customers */
 router.get('/', function(req, res, next) {
+    console.log('entrou');
     customer.find(function(err, result) {
         if (err) next(err);
         res.json(result);

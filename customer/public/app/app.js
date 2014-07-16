@@ -6,15 +6,38 @@ var SERVER_URL = "http://localhost:3000/api";
 // Criação do $app que é o modulo que representa toda a aplicação.
 var $app = angular.module('app', ['ngRoute', 'app.customerCtrl']);
 
-$app.config(function($routeProvider, $httpProvider) {
+$app.config(function($routeProvider, $httpProvider, $locationProvider) {
+
+    $locationProvider.html5Mode(true);
 
     // configura o router provider
     $routeProvider
-    .when('/',             {                             templateUrl: 'partials/main' })
-    .when('/clientes',     { controller: 'customerCtrl', templateUrl: 'partials/customer/main' })
-    .when('/clientes/new', { controller: 'customerCtrl', templateUrl: 'partials/customer/new' })
-    .when('/clientes/:id', { controller: 'customerCtrl', templateUrl: 'partials/customer/update' })
-    .when('/funcionarios', { controller: 'employeeCtrl', templateUrl: 'partials/employee/main' })
+    .when('/', { templateUrl: 'Customer/main.html' })
+
+    .when('/clientes', 
+    { 
+        controller: 'customerCtrl', 
+        templateUrl: 'views/customer/main.html' 
+    })
+
+    .when('/clientes/new', 
+    {
+        controller: 'customerCtrl', 
+        templateUrl: 'views/customer/new.html' 
+    })
+
+    .when('/clientes/:id', 
+    { 
+        controller: 'customerCtrl', 
+        templateUrl: 'views/customer/update.html' 
+    })
+
+    .when('/funcionarios', 
+    { 
+        controller: 'employeeCtrl', 
+        templateUrl: 'views/employee/main.html' 
+    })
+
     .otherwise({ redirectTo: '/' });
 
     $httpProvider.responseInterceptors.push(function($q, $rootScope) {

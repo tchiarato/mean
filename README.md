@@ -17,9 +17,9 @@ Projetos MEAN
 
 <pre>
     customer $ npm start
-
-    Or
-
+</pre>
+Or
+<pre>
     customer $ nodemon ./bin/www
 </pre>
 

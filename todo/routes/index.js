@@ -6,8 +6,8 @@ router.get('/', function(req, res) {
     res.render('index');
 });
 
-router.get('/partials/:partialPath', function(req, res) {
-    res.render('partials/' + req.params.partialPath);
-});
+// router.get('/partials/:partialPath', function(req, res) {
+//     res.render('partials/' + req.params.partialPath);
+// });
 
 module.exports = router;
